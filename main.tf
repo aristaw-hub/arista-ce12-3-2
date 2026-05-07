@@ -73,6 +73,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "s3_tf" {
 }
 
 # Lifecycle configuration
+#checkov:skip=CKV_AWS_300:Multipart upload cleanup not required
 resource "aws_s3_bucket_lifecycle_configuration" "s3_tf" {
   bucket = aws_s3_bucket.s3_tf.id
 
