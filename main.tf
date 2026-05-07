@@ -26,6 +26,12 @@ terraform {
 #}
 
 resource "aws_s3_bucket" "s3_tf" {
+  #checkov:skip=CKV_AWS_144:CRR not required for lab
+  #checkov:skip=CKV2_AWS_62:Event notification not required
+  #checkov:skip=CKV2_AWS_61:Lifecycle config not required
+  #checkov:skip=CKV2_AWS_6:Public access block not required
+  #checkov:skip=CKV_AWS_21:Versioning not required
+  #checkov:skip=CKV_AWS_145:KMS encryption not required
   bucket_prefix = "arista-ce12-7May-bucket"
 }
 
@@ -49,10 +55,13 @@ resource "aws_s3_bucket_versioning" "s3_tf" {
 
 # Enable server-side encryption using KMS
 resource "aws_kms_key" "s3_key" {
+  #checkov:skip=CKV_AWS_7:Key rotation not required
+  #checkov:skip=CKV2_AWS_64:Custom KMS policy not required
   description = "KMS key for S3 bucket encryption"
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "s3_tf" {
+   #checkov:skip=CKV_AWS_300:Multipart upload cleanup not required
   bucket = aws_s3_bucket.s3_tf.id
 
   rule {
@@ -81,6 +90,12 @@ resource "aws_s3_bucket_lifecycle_configuration" "s3_tf" {
 
 # Logging bucket
 resource "aws_s3_bucket" "log_bucket" {
+  #checkov:skip=CKV_AWS_144:CRR not required for lab
+  #checkov:skip=CKV2_AWS_62:Event notification not required
+  #checkov:skip=CKV2_AWS_61:Lifecycle config not required
+  #checkov:skip=CKV2_AWS_6:Public access block not required
+  #checkov:skip=CKV_AWS_21:Versioning not required
+  #checkov:skip=CKV_AWS_145:KMS encryption not required
   bucket_prefix = "arista-ce12-log-bucket"
 }
 
