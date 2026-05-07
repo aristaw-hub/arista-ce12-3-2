@@ -61,7 +61,7 @@ resource "aws_kms_key" "s3_key" {
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "s3_tf" {
-   #checkov:skip=CKV_AWS_300:Multipart upload cleanup not required
+  #checkov:skip=CKV_AWS_300:Multipart upload cleanup not required
   bucket = aws_s3_bucket.s3_tf.id
 
   rule {
