@@ -51,4 +51,3 @@ jobs:
    
     - name: Terraform Plan
       run: terraform plan
-      
